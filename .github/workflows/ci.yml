@@ -29,14 +29,6 @@ jobs:
       - name: Build container image
         run: make build
 
-      - name: Deploy database
-        run: make dev-setup
-        env:
-          PGHOST: ec2-54-78-36-245.eu-west-1.compute.amazonaws.com
-          PGPORT: 5432
-          PGUSER: iqgmlockrescfp
-          PGDATABASE: d6q5ckekcgmstb
-          PGPASSWORD: ${{ secrets.PGPASSWORD }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
