@@ -14,4 +14,4 @@ db-reset:
 db-create:
 	createdb hexlet
 
-dev-setup: db-reset schema-load data-load
+dev-setup: schema-load data-load
