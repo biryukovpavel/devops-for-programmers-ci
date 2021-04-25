@@ -38,6 +38,7 @@ jobs:
           PGDATABASE: d6q5ckekcgmstb
           PGPASSWORD: ${{ secrets.PGPASSWORD }}
   deploy:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
