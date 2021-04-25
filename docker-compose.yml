@@ -1,0 +1,39 @@
+version: "2.4"
+services:
+    postgres:
+        image: postgres:12.6-alpine
+        ports:
+            - 5432:5432
+        hostname: database
+        networks:
+            - net
+        environment:
+            POSTGRES_PASSWORD: ${pg_password}
+            PGDATA: /var/lib/postgresql/data/pgdata      
+        volumes:
+            - pg-data:/var/lib/postgresql/data
+        mem_limit: 512M
+        restart: always
+    
+    fastify:
+        # build:
+        #     context: .
+        #     dockerfile: Dockerfile
+        image: fastify:${image_tag}
+        ports:
+            - "3000:3000"
+        hostname: fastify
+        networks:
+            - net
+        depends_on:
+            - postgres
+        environment:
+            DATABASE_URL: ${db_connection}
+        mem_limit: 256M
+        restart: always
+
+networks:
+    net:
+
+volumes:
+    pg-data:
