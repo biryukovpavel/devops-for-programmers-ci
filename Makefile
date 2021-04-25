@@ -1,3 +1,7 @@
+test:
+	test -f Dockerfile
+	test -f docker-compose.yml
+
 build:
 	docker build . -t hexlet/devops-for-programmers-ci
 
