@@ -3,7 +3,10 @@ const app = require('fastify')({
 })
 
 app.register(require('fastify-postgres'), {
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
   })
 
 app.get('/', function (req, reply) {
