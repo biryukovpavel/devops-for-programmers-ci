@@ -19,7 +19,7 @@ app.get('/user/:id', async (req, reply) => {
     return rows
 })
 
-app.listen(3000, '0.0.0.0', (err, address) => {
+app.listen(process.env.PORT || 3000, '0.0.0.0', (err, address) => {
     if (err) {
         app.log.error(err)
         process.exit(1)
