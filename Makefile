@@ -13,5 +13,8 @@ data-load:
 
 dev-setup: schema-load data-load
 
+setup:
+	npm install
+
 lint:
 	npx eslint "src/**"
