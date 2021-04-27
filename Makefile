@@ -12,3 +12,6 @@ data-load:
 	cd ./db && psql -f users.sql
 
 dev-setup: schema-load data-load
+
+lint:
+	npx eslint "src/**"
